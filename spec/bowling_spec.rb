@@ -8,7 +8,11 @@ class Game
   end
   
   def roll(pins_down)
-    @score += pins_down
+    if @score == 10
+      @score += (pins_down * 2)
+    else
+      @score += pins_down
+    end
   end  
 end
 
@@ -44,13 +48,13 @@ describe "bowling" do
      end
    end
    
-  #     
-  # describe "rolling a strike followed by a 5" do
-  #    it "scores 20" do
-  #      game = Game.new
-  #      game.roll 10 
-  #      game.roll 5
-  #      game.score.should == 20
-  #    end
-  #  end
+      
+  describe "rolling a strike followed by a 5" do
+     it "scores 20" do
+       game = Game.new
+       game.roll 10 
+       game.roll 5
+       game.score.should == 20
+     end
+   end
 end
